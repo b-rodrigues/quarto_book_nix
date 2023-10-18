@@ -1,0 +1,3 @@
+# Preface {.unnumbered}
+
+Nix is really useful, so here’s a template that uses it to build the book on Github Actions.

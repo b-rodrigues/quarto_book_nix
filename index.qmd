@@ -1,0 +1,8 @@
+# Welcome! {.unnumbered}
+## This book template gets built on Github Actions at each push
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(tidy.opts = list(width.cutoff = 60), tidy = TRUE)
+```
+
+Hello.
