@@ -30,7 +30,6 @@ jobs:
       uses: quarto-dev/quarto-actions/publish@v2
       with:
         target: gh-pages
+        shell: nix-shell --command "bash" {0}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
-      shell: nix-shell --command "bash" {0}
-
