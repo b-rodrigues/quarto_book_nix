@@ -27,7 +27,7 @@ jobs:
       run: |
         nix-build
     - name: Publish to GitHub Pages (and render)
-      uses: b-rodrigues/quarto-nix-actions/publish@v2
+      uses: b-rodrigues/quarto-nix-actions/publish
       with:
         target: gh-pages
       env:
