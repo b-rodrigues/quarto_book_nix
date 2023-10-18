@@ -28,9 +28,4 @@ jobs:
         nix-build
 
     - name: Start Nix Shell
-      run: nix-shell --command "bash"
-
-    - name: Run Your Action Inside Nix Shell
-      run: |
-        pdflatex -version
-      shell: bash
+      run: nix-shell --command "pdflatex -version"
