@@ -27,9 +27,8 @@ jobs:
       run: |
         nix-build
     - name: Publish to GitHub Pages (and render)
-      uses: quarto-dev/quarto-actions/publish@v2
+      uses: b-rodrigues/quarto-nix-actions/publish@v2
       with:
         target: gh-pages
-        shell: nix-shell --command "bash" {0}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
