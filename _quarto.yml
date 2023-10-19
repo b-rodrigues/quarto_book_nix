@@ -13,8 +13,9 @@ book:
   downloads: [pdf, epub]
   chapters:
     - index.qmd
-    - preface.qmd
-    - book_conclusion.qmd
+    - nix_nixpgs.qmd
+    - nix_actions.qmd
+    - conclusion.qmd
   page-navigation: true
 
 bibliography: references.bib
