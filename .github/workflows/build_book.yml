@@ -1,4 +1,4 @@
-name: Nix Shell for Action
+name: Build book using Nix
 
 on:
   push:
