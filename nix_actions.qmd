@@ -2,18 +2,18 @@
 
 ## Setup
 
-Just like when building using the usual approches, you first need to build the book
-locally, on your computer, once. For this, after having generated the `default.nix`
-file, you can build the environment using `nix-build`, and then drop in a shell
-with `nix-shell` (if this previous sentence is confusing, make sure you read the 
-vignette linked at the end of the previous chapter).
+Just like when building using the usual approches, you first need to build the
+book locally, on your computer, once. For this, after having generated the
+`default.nix` file, you can build the environment using `nix-build`, and then
+drop in a shell with `nix-shell` (if this previous sentence is confusing, make
+sure you read the vignette linked at the end of the previous chapter).
 
-Once in that shell, run `quarto publish gh-pages`. This will render the book, and make
-sure that everything gets setup properly. If the book does not render, this could mean
-that you're missing some dependency. Make sure to specify all the requirements
-in the `define_env.R` script and that you re-generated the `default.nix` file. If 
-the `quarto publish gh-pages` command succeeds, you're all set. Editing the book and
-pushing will build the book on Github Actions.
+Once in that shell, run `quarto publish gh-pages`. This will render the book,
+and make sure that everything gets setup properly. If the book does not render,
+this could mean that you're missing some dependency. Make sure to specify all
+the requirements in the `define_env.R` script and that you re-generated the
+`default.nix` file. If the `quarto publish gh-pages` command succeeds, you're
+all set. Editing the book and pushing will build the book on Github Actions.
 
 ## The Github Actions workflow file
 
@@ -57,14 +57,15 @@ jobs:
 
 ```
 
-The first step *Checkout code* makes the code availalbe to the rest of the steps. I then install Nix
-on this runner using the Determinate Systems `nix-installer-action` then I use another action from
-Determinate Systems, the `magic-nix-cache-action`. This action caches all the packages so that they
-don't need to get re-downloaded each time a change gets pushed, speeding up the process by a lot.
-The development environment gets then built using `nix-build`.
+The first step *Checkout code* makes the code availalbe to the rest of the
+steps. I then install Nix on this runner using the Determinate Systems
+`nix-installer-action` then I use another action from Determinate Systems, the
+`magic-nix-cache-action`. This action caches all the packages so that they don't
+need to get re-downloaded each time a change gets pushed, speeding up the
+process by a lot. The development environment gets then built using `nix-build`.
 
-Finally, an action I defined gets runned, `quarto-nix-actions/publish`. This is a fork of the 
-`quarto-actions/publish` action which you can find 
-[here](https://github.com/quarto-dev/quarto-actions/blob/main/publish/action.yml). My fork
-simply makes sure that the `quarto render` and `quarto publish` commands run in the Nix
-environment defined for the project.
+Finally, an action I defined runs, `quarto-nix-actions/publish`. This is
+a fork of the `quarto-actions/publish` action which you can find
+[here](https://github.com/quarto-dev/quarto-actions/blob/main/publish/action.yml).
+My fork simply makes sure that the `quarto render` and `quarto publish` commands
+run in the Nix environment defined for the project.
