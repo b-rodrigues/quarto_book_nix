@@ -32,8 +32,8 @@ install first. The third reason, is that you can pin a specific revision of
 ## Ensuring reproducibility with Nix
 
 The `nixpkgs` mono-repository is "just" a Github repsitory which you can find here:
-https://github.com/NixOS/nixpkgs
-This repository contains Nix expressions to build and install more than 80'000 packages and
+[https://github.com/NixOS/nixpkgs](https://github.com/NixOS/nixpkgs). This repository 
+contains Nix expressions to build and install more than 80'000 packages and
 you can search for installable Nix packages [here](https://search.nixos.org/packages).
 
 Because `nixpkgs` is a Github repository, it is possible to use a specific commit hash
