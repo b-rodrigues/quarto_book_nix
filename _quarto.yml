@@ -2,7 +2,8 @@ project:
   type: book
 
 book:
-  title: "Building a Quarto book using Nix on Github Actions"
+  title: "A 100% reproducible Quarto book template"
+  subtitle: "Powered by Github Actions and Nix"
   author: "Bruno Rodrigues"
   date: "2023-10-19"
   search: true
