@@ -1,0 +1,30 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Building a Quarto book using Nix on Github Actions",
+    "section": "",
+    "text": "Welcome!"
+  },
+  {
+    "objectID": "index.html#this-book-template-gets-built-on-github-actions-at-each-push",
+    "href": "index.html#this-book-template-gets-built-on-github-actions-at-each-push",
+    "title": "Building a Quarto book using Nix on Github Actions",
+    "section": "This book template gets built on Github Actions at each push",
+    "text": "This book template gets built on Github Actions at each push\nHello."
+  },
+  {
+    "objectID": "preface.html",
+    "href": "preface.html",
+    "title": "Preface",
+    "section": "",
+    "text": "Nix is really useful, so here’s a template that uses it to build the book on Github Actions."
+  },
+  {
+    "objectID": "book_conclusion.html",
+    "href": "book_conclusion.html",
+    "title": "1  The end",
+    "section": "",
+    "text": "In conclusion, Nix rocks."
+  }
+]
