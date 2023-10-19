@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Bruno Rodrigues">
-<meta name="dcterms.date" content="2023-10-19">
 
-<title>A fully reproducible Quarto book template</title>
+<title>A fully reproducible Quarto book template - 3&nbsp; Conclusion</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -35,7 +33,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./nix_nixpgs.html" rel="next">
+<link href="./nix_actions.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -78,7 +76,7 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">A fully reproducible Quarto book template</h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Conclusion</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -137,7 +135,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">Welcome!</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Welcome!</a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -152,7 +150,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./conclusion.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Conclusion</span></a>
+  <a href="./conclusion.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Conclusion</span></a>
   </div>
 </li>
     </ul>
@@ -160,43 +158,21 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#welcome" id="toc-welcome" class="nav-link active" data-scroll-target="#welcome">Welcome!</a>
-  <ul class="collapse">
-  <li><a href="#this-book-template-gets-built-on-github-actions-at-each-push" id="toc-this-book-template-gets-built-on-github-actions-at-each-push" class="nav-link" data-scroll-target="#this-book-template-gets-built-on-github-actions-at-each-push">This book template gets built on Github Actions at each push</a></li>
-  </ul></li>
-  </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/b-rodrigues/quarto_book_nix/edit/main/index.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">A fully reproducible Quarto book template</h1>
-<p class="subtitle lead">Powered by Github Actions and Nix</p>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Conclusion</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Bruno Rodrigues </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">October 19, 2023</p>
-    </div>
-  </div>
   
     
   </div>
@@ -204,24 +180,9 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="welcome" class="level1 unnumbered">
-<h1 class="unnumbered">Welcome!</h1>
-<section id="this-book-template-gets-built-on-github-actions-at-each-push" class="level2">
-<h2 class="anchored" data-anchor-id="this-book-template-gets-built-on-github-actions-at-each-push">This book template gets built on Github Actions at each push</h2>
-<p>This Quarto book template gets automatically built on Github Actions each time you push changes. To ensure reproducibility, the Nix package manager gets used to install all the dependencies you need:</p>
-<ul>
-<li>An R version;</li>
-<li>A library of R packages;</li>
-<li>Quarto;</li>
-<li>TeXLive packages;</li>
-<li>any other system-level dependency that is required.</li>
-</ul>
-<p>Because a specific <code>nixpkgs</code> revision gets used, <em>exactly</em> the same pieces of software get <em>always</em> installed. So you don’t need to pin a specific version of R, nor use <code>{renv}</code>, nor make sure to use a fixed version of a runner (typically ubuntu-22.04) to ensure reproducibility of your book. The next chapter explain how Nix works in more detail and why it’s enough to use it to ensure reproducibility.</p>
-<p>Each time a commit gets pushed, a website gets built, an Epub for E-ink readers (such as the Kindle or the Kobo) and a PDF get built. The PDF is also in the right format and ready for self-publishing on Amazon Kindle Direct Publishing.</p>
+<p>In conclusion, Nix rocks.</p>
 
 
-</section>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -474,11 +435,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./nix_actions.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Building on Github Actions with Nix</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./nix_nixpgs.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Nix</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

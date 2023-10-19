@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Bruno Rodrigues">
-<meta name="dcterms.date" content="2023-10-19">
 
-<title>A fully reproducible Quarto book template</title>
+<title>A fully reproducible Quarto book template - 2&nbsp; Building on Github Actions with Nix</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -35,7 +33,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./nix_nixpgs.html" rel="next">
+<link href="./conclusion.html" rel="next">
+<link href="./nix_nixpgs.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -78,7 +77,7 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">A fully reproducible Quarto book template</h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Building on Github Actions with Nix</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -137,7 +136,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">Welcome!</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Welcome!</a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -147,7 +146,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./nix_actions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Building on Github Actions with Nix</span></a>
+  <a href="./nix_actions.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Building on Github Actions with Nix</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -164,39 +163,24 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#welcome" id="toc-welcome" class="nav-link active" data-scroll-target="#welcome">Welcome!</a>
-  <ul class="collapse">
-  <li><a href="#this-book-template-gets-built-on-github-actions-at-each-push" id="toc-this-book-template-gets-built-on-github-actions-at-each-push" class="nav-link" data-scroll-target="#this-book-template-gets-built-on-github-actions-at-each-push">This book template gets built on Github Actions at each push</a></li>
-  </ul></li>
+  <li><a href="#setup" id="toc-setup" class="nav-link active" data-scroll-target="#setup"><span class="header-section-number">2.1</span> Setup</a></li>
+  <li><a href="#the-github-actions-workflow-file" id="toc-the-github-actions-workflow-file" class="nav-link" data-scroll-target="#the-github-actions-workflow-file"><span class="header-section-number">2.2</span> The Github Actions workflow file</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/b-rodrigues/quarto_book_nix/edit/main/index.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/b-rodrigues/quarto_book_nix/edit/main/nix_actions.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">A fully reproducible Quarto book template</h1>
-<p class="subtitle lead">Powered by Github Actions and Nix</p>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Building on Github Actions with Nix</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Bruno Rodrigues </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">October 19, 2023</p>
-    </div>
-  </div>
   
     
   </div>
@@ -204,23 +188,53 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="welcome" class="level1 unnumbered">
-<h1 class="unnumbered">Welcome!</h1>
-<section id="this-book-template-gets-built-on-github-actions-at-each-push" class="level2">
-<h2 class="anchored" data-anchor-id="this-book-template-gets-built-on-github-actions-at-each-push">This book template gets built on Github Actions at each push</h2>
-<p>This Quarto book template gets automatically built on Github Actions each time you push changes. To ensure reproducibility, the Nix package manager gets used to install all the dependencies you need:</p>
-<ul>
-<li>An R version;</li>
-<li>A library of R packages;</li>
-<li>Quarto;</li>
-<li>TeXLive packages;</li>
-<li>any other system-level dependency that is required.</li>
-</ul>
-<p>Because a specific <code>nixpkgs</code> revision gets used, <em>exactly</em> the same pieces of software get <em>always</em> installed. So you don’t need to pin a specific version of R, nor use <code>{renv}</code>, nor make sure to use a fixed version of a runner (typically ubuntu-22.04) to ensure reproducibility of your book. The next chapter explain how Nix works in more detail and why it’s enough to use it to ensure reproducibility.</p>
-<p>Each time a commit gets pushed, a website gets built, an Epub for E-ink readers (such as the Kindle or the Kobo) and a PDF get built. The PDF is also in the right format and ready for self-publishing on Amazon Kindle Direct Publishing.</p>
-
-
+<section id="setup" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="setup"><span class="header-section-number">2.1</span> Setup</h2>
+<p>Just like when building using the usual approches, you first need to build the book locally, on your computer, once. For this, after having generated the <code>default.nix</code> file, you can build the environment using <code>nix-build</code>, and then drop in a shell with <code>nix-shell</code> (if this previous sentence is confusing, make sure you read the vignette linked at the end of the previous chapter).</p>
+<p>Once in that shell, run <code>quarto publish gh-pages</code>. This will render the book, and make sure that everything gets setup properly. If the book does not render, this could mean that you’re missing some dependency. Make sure to specify all the requirements in the <code>define_env.R</code> script and that you re-generated the <code>default.nix</code> file. If the <code>quarto publish gh-pages</code> command succeeds, you’re all set. Editing the book and pushing will build the book on Github Actions.</p>
 </section>
+<section id="the-github-actions-workflow-file" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="the-github-actions-workflow-file"><span class="header-section-number">2.2</span> The Github Actions workflow file</h2>
+<p>Here is what the workflow file looks like:</p>
+<pre><code>name: Build book using Nix
+
+on:
+  push:
+    branches:
+      - main
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    - name: Install Nix
+      uses: DeterminateSystems/nix-installer-action@main
+      with:
+        logger: pretty
+        log-directives: nix_installer=trace
+        backtrace: full
+
+    - name: Nix cache
+      uses: DeterminateSystems/magic-nix-cache-action@main
+
+    - name: Build development environment
+      run: |
+        nix-build
+
+    - name: Publish to GitHub Pages (and render)
+      uses: b-rodrigues/quarto-nix-actions/publish@main
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
+</code></pre>
+<p>The first step <em>Checkout code</em> makes the code availalbe to the rest of the steps. I then install Nix on this runner using the Determinate Systems <code>nix-installer-action</code> then I use another action from Determinate Systems, the <code>magic-nix-cache-action</code>. This action caches all the packages so that they don’t need to get re-downloaded each time a change gets pushed, speeding up the process by a lot. The development environment gets then built using <code>nix-build</code>.</p>
+<p>Finally, an action I defined gets runned, <code>quarto-nix-actions/publish</code>. This is a fork of the <code>quarto-actions/publish</code> action which you can find <a href="https://github.com/quarto-dev/quarto-actions/blob/main/publish/action.yml">here</a>. My fork simply makes sure that the <code>quarto render</code> and <code>quarto publish</code> commands run in the Nix environment defined for the project.</p>
+
+
 </section>
 
 </main> <!-- /main -->
@@ -474,10 +488,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./nix_nixpgs.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Nix</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./nix_nixpgs.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Nix</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./conclusion.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Conclusion</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
