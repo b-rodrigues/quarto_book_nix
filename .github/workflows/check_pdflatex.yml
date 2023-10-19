@@ -29,7 +29,5 @@ jobs:
 
     - name: Publish to GitHub Pages (and render)
       uses: b-rodrigues/quarto-nix-actions/publish@main
-      with:
-        target: gh-pages
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
