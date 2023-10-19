@@ -253,7 +253,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<p>This book template uses the Nix packager manager to handle the book’s dependecies. This chapter introduces the Nix packager manager and <code>nixpkgs</code> quickly.</p>
+<p>This book template uses the Nix packager manager to handle the book’s dependencies. This chapter introduces the Nix packager manager and <code>nixpkgs</code> quickly.</p>
 <section id="the-nix-package-manager" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="the-nix-package-manager"><span class="header-section-number">1.1</span> The Nix package manager</h2>
 <p>Nix is a package manager available for Linux, Windows (on WSL2) and macOS. Its mono-repository, <code>nixpkgs</code>, contains more than 80’000 packages, among them the entirety of the R packages released on CRAN and Bioconductor, as well as R itself (and RStudio, but only for Linux and Windows, as of writing). This means that it is possible to use the Nix package manager to install R, the R packages you require for your day-to-day work, and any other packages that you might need (for example, if you need Python and Python packages, you can install these as well).</p>
@@ -277,6 +277,7 @@ in
  pkgs.mkShell {
   buildInputs = [  rpkgs system_packages  ];
  }</code></pre>
+<p>As you can see, we import a specific revision of the <code>nixpkgs</code> Github repository to ensure that we always get the same packages in our environment.</p>
 <p>If you’re unfamiliar with Nix, this file can be quite scary. But don’t worry, with my co-author <a href="https://github.com/philipp-baumann">Philipp Baumann</a> we developed an R package called <code>{rix}</code> which generate this <code>default.nix</code> files for you.</p>
 </section>
 <section id="the-r-rix-package" class="level2" data-number="1.3">

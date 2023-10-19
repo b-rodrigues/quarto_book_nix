@@ -232,7 +232,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
 </code></pre>
 <p>The first step <em>Checkout code</em> makes the code availalbe to the rest of the steps. I then install Nix on this runner using the Determinate Systems <code>nix-installer-action</code> then I use another action from Determinate Systems, the <code>magic-nix-cache-action</code>. This action caches all the packages so that they don’t need to get re-downloaded each time a change gets pushed, speeding up the process by a lot. The development environment gets then built using <code>nix-build</code>.</p>
-<p>Finally, an action I defined gets runned, <code>quarto-nix-actions/publish</code>. This is a fork of the <code>quarto-actions/publish</code> action which you can find <a href="https://github.com/quarto-dev/quarto-actions/blob/main/publish/action.yml">here</a>. My fork simply makes sure that the <code>quarto render</code> and <code>quarto publish</code> commands run in the Nix environment defined for the project.</p>
+<p>Finally, an action I defined runs, <code>quarto-nix-actions/publish</code>. This is a fork of the <code>quarto-actions/publish</code> action which you can find <a href="https://github.com/quarto-dev/quarto-actions/blob/main/publish/action.yml">here</a>. My fork simply makes sure that the <code>quarto render</code> and <code>quarto publish</code> commands run in the Nix environment defined for the project.</p>
 
 
 </section>
