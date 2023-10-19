@@ -2,7 +2,7 @@ project:
   type: book
 
 book:
-  title: "A 100\% reproducible Quarto book template"
+  title: "A fully reproducible Quarto book template"
   subtitle: "Powered by Github Actions and Nix"
   author: "Bruno Rodrigues"
   date: "2023-10-19"
