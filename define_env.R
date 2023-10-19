@@ -5,6 +5,7 @@ rix(r_ver = "4.3.1",
     system_pkgs = "quarto",
     tex_pkgs = c(
       "amsmath",
+      "framed",
       "fvextra",
       "environ",
       "fontawesome5",

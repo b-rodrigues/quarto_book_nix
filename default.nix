@@ -4,6 +4,7 @@
 #  > r_pkgs = c("quarto"),
 #  > system_pkgs = "quarto",
 #  > tex_pkgs = c("amsmath",
+#  > "framed",
 #  > "fvextra",
 #  > "environ",
 #  > "fontawesome5",
@@ -25,7 +26,7 @@ let
   inherit (pkgs.rPackages) quarto;
 };
   tex = (pkgs.texlive.combine {
-  inherit (pkgs.texlive) scheme-small amsmath fvextra environ fontawesome5 orcidlink pdfcol tcolorbox tikzfill;
+  inherit (pkgs.texlive) scheme-small amsmath framed fvextra environ fontawesome5 orcidlink pdfcol tcolorbox tikzfill;
 });
  system_packages = builtins.attrValues {
   inherit (pkgs) R glibcLocalesUtf8 quarto;
