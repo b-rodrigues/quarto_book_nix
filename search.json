@@ -11,7 +11,7 @@
     "href": "index.html#this-book-template-gets-built-on-github-actions-at-each-push",
     "title": "Building a Quarto book using Nix on Github Actions",
     "section": "This book template gets built on Github Actions at each push",
-    "text": "This book template gets built on Github Actions at each push\nHello."
+    "text": "This book template gets built on Github Actions at each push\nThis Quarto book template gets automatically built on Github Actions each time you push changes. To ensure reproducibility, the Nix package manager gets used to install all the dependencies you need:\n\nAn R version;\nA library of R packages;\nQuarto;\nTeXLive packages;\nany other system-level dependency that is required.\n\nBecause a specific nixpkgs revision gets used, exactly the same pieces of software get always installed. So you don’t need to pin a specific version of R, nor use {renv}, nor make sure to use a fixed version of a runner (typically ubuntu-22.04) to ensure reproducibility of your book. The next chapter explain how Nix works in more detail and why it’s enough to use it to ensure reproducibility.\nEach time a commit gets pushed, a website gets built, an Epub for E-ink readers (such as the Kindle or the Kobo) and a PDF get built. The PDF is also in the right format and ready for self-publishing on Amazon Kindle Direct Publishing."
   },
   {
     "objectID": "preface.html",
