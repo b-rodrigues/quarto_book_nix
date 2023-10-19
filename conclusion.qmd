@@ -15,17 +15,17 @@ using `{renv}`, you could check out my [other Github
 template](https://github.com/b-rodrigues/kdp_quarto). This template does exactly
 the same thing: it builds a website for your book, an Epub for E-ink readers and
 a PDF, ready for Amazon's self-publishing service. The difference is that the
-right version of R, TeXLive and Quarto get installed using dedicated Github
-Actions, and the R packages get installed using `{renv}`. The underlying
-operating system is `ubuntu-22.04` instead of `ubuntu-latest`. This is to ensure
-that the underlying system dependencies stay stable, but it also means that you
-will need to update this operating system once version 22.04 of Ubuntu is
-deprecated, in 2027, which could cause the R version and packages that you need
-not to be installable anymore. This is a lot of moving pieces, and if one of
-them fails, nothing will work anymore. You also notice this if you pay attention
-at the number of lines of code of the workflow files of both repositories: if
-you compare the [Github workflow file from the template that uses actions to
-install the right versions and
+right version of R, TeXLive and Quarto get installed using dedicated actions,
+and the R packages get installed using `{renv}`. The underlying operating system
+is `ubuntu-22.04` instead of `ubuntu-latest`. This is to ensure that the
+underlying system dependencies stay stable, but it also means that you will need
+to update this operating system once version 22.04 of Ubuntu is deprecated (in
+2027) which could cause the R version and packages that you need not to be
+installable anymore. This is a lot of moving pieces, and if one of them fails,
+nothing will work anymore. You also notice this if you pay attention at the
+number of lines of code of the workflow files of both repositories: if you
+compare the [Github workflow file from the template that uses actions to install
+the right software and
 {renv}](https://github.com/b-rodrigues/kdp_quarto/blob/main/.github/workflows/build_book.yml)
 to the one from [this
 template](https://github.com/b-rodrigues/quarto_book_nix/blob/master/.github/workflows/build_book.yml)
@@ -33,7 +33,7 @@ you'll notice that the one from this template is much shorter as well.
 
 The only dependency is Nix itself, and Nix is not going anywhere, as it's been
 around for 20 years. The Determinate System actions are optional; so even if for
-some reason those fail in the future, there not needed. It's just that using
+some reason those fail in the future, they're not needed. It's just that using
 them makes things easier.
 
 If you use this template, or have any questions, please let me know
