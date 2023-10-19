@@ -64,8 +64,9 @@ steps. I then install Nix on this runner using the Determinate Systems
 need to get re-downloaded each time a change gets pushed, speeding up the
 process by a lot. The development environment gets then built using `nix-build`.
 
-Finally, an action I defined runs, `quarto-nix-actions/publish`. This is
-a fork of the `quarto-actions/publish` action which you can find
+Finally, an action I defined runs, `quarto-nix-actions/publish`. This is a fork
+of the `quarto-actions/publish` action which you can find
 [here](https://github.com/quarto-dev/quarto-actions/blob/main/publish/action.yml).
 My fork simply makes sure that the `quarto render` and `quarto publish` commands
-run in the Nix environment defined for the project.
+run in the [Nix environment defined for the
+project](https://github.com/b-rodrigues/quarto-nix-actions/blob/f48f5a7813eb4978a2f557ff45bcc854526fb80b/publish/action.yml#L58).
