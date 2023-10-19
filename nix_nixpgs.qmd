@@ -1,5 +1,66 @@
 # Nix
 
+This book template uses the Nix packager manager to handle the book's dependecies.
+This chapter introduces the Nix packager manager and `nixpkgs` quickly.
+
 ## The Nix package manager
 
-## nixpkgs
+Nix is a package manager available for Linux, Windows (on WSL2) and macOS. Its 
+mono-repository, `nixpkgs`, contains more than 80'000 packages, among them
+the entirety of the R packages released on CRAN and Bioconductor, as well as
+R itself (and RStudio, but only for Linux and Windows, as of writing). This means
+that it is possible to use the Nix package manager to install R, the R packages
+you require for your day-to-day work, and any other packages that you might need
+(for example, if you need Python and Python packages, you can install these
+as well).
+
+The question that remains unanswered though, is why use the Nix package manager
+to install all this software instead of using the usual ways of first installing
+R, and then using `install.packages()` to install any required packages?
+
+There are at least three reasons. The first is that it is possible to define so-called
+`default.nix` files that define an environment. This environment will contain all the 
+packages that you require, and will not interfere with any other packages installed
+on your system. This essentially means that you can have project-specific `default.nix`
+files, each specifying the requirements for specific projects. The second reason is that
+when installing a package that requires system-level dependencies, {rJava} for example,
+all the lower-level dependencies get automatically installed. Forget about reading error
+messages of `install.packages()` to find which system development library you need to
+install first. The third reason, is that you can pin a specific revision of 
+`nixpkgs` to ensure reproducibility. 
+
+## Ensuring reproducibility with Nix
+
+The `nixpkgs` mono-repository is "just" a Github repsitory which you can find here:
+https://github.com/NixOS/nixpkgs
+This repository contains Nix expressions to build and install more than 80'000 packages and
+you can search for installable Nix packages [here](https://search.nixos.org/packages).
+
+Because `nixpkgs` is a Github repository, it is possible to use a specific commit hash
+to install the packages as they were at a specific point in time. For example, if you 
+use this commit, 7c9cc5a6e, you’ll get the very latest packages as of the 19th of October 2023,
+but if you used this one instead: 976fa3369, you’ll get packages from the 19th of August 2023.
+
+You can declare which revision of `nixpkgs` to use at the top of a `default.nix` file. Here 
+is what such a file looks like:
+
+```
+let
+ pkgs = import (fetchTarball "https://github.com/NixOS/nixpkgs/archive/976fa3369d722e76f37c77493d99829540d43845.tar.gz") {};
+ rpkgs = builtins.attrValues {
+  inherit (pkgs.rPackages) tidymodels vetiver targets xgboost;
+};
+ system_packages = builtins.attrValues {
+  inherit (pkgs) R;
+};
+in
+ pkgs.mkShell {
+  buildInputs = [  rpkgs system_packages  ];
+ }
+```
+
+If you’re unfamiliar with Nix, this file can be quite scary. But don’t worry, with my co-author
+[Philipp Baumann](https://github.com/philipp-baumann) we developed an R package called `{rix}` 
+which generate this `default.nix` files for you.
+
+## The R {rix} package
