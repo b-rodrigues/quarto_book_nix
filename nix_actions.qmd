@@ -1,1 +1,16 @@
+# Building on Github Actions with Nix
 
+## Setup
+
+Just like when building using the usual approches, you first need to build the book
+locally, on your computer, once. For this, after having generated the `default.nix`
+file, you can build the environment using `nix-build`, and then drop in a shell
+with `nix-shell` (if this previous sentence is confusing, make sure you read the 
+vignette linked at the end of the previous chapter).
+
+Once in that shell, run `quarto publish gh-pages`. This will render the book, and make
+sure that everything gets setup properly. If the book does not render, this could mean
+that you're missing some dependency. Make sure to specify all the requirements
+in the `define_env.R` script and that you re-generated the `default.nix` file. If 
+the `quarto publish gh-pages` command succeeds, you're all set. Editing the book and
+pushing will build the book on Github Actions.
