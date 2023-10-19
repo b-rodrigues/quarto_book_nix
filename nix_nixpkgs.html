@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Bruno Rodrigues">
-<meta name="dcterms.date" content="2023-10-19">
 
-<title>A fully reproducible Quarto book template</title>
+<title>A fully reproducible Quarto book template - 1&nbsp; Nix</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -25,6 +23,70 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -35,7 +97,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./nix_nixpkgs.html" rel="next">
+<link href="./nix_actions.html" rel="next">
+<link href="./index.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -78,7 +141,7 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">A fully reproducible Quarto book template</h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Nix</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -137,12 +200,12 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">Welcome!</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Welcome!</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./nix_nixpkgs.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Nix</span></a>
+  <a href="./nix_nixpkgs.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Nix</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -164,39 +227,25 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#welcome" id="toc-welcome" class="nav-link active" data-scroll-target="#welcome">Welcome!</a>
-  <ul class="collapse">
-  <li><a href="#this-book-template-gets-built-on-github-actions-at-each-push" id="toc-this-book-template-gets-built-on-github-actions-at-each-push" class="nav-link" data-scroll-target="#this-book-template-gets-built-on-github-actions-at-each-push">This book template gets built on Github Actions at each push</a></li>
-  </ul></li>
+  <li><a href="#the-nix-package-manager" id="toc-the-nix-package-manager" class="nav-link active" data-scroll-target="#the-nix-package-manager"><span class="header-section-number">1.1</span> The Nix package manager</a></li>
+  <li><a href="#ensuring-reproducibility-with-nix" id="toc-ensuring-reproducibility-with-nix" class="nav-link" data-scroll-target="#ensuring-reproducibility-with-nix"><span class="header-section-number">1.2</span> Ensuring reproducibility with Nix</a></li>
+  <li><a href="#the-r-rix-package" id="toc-the-r-rix-package" class="nav-link" data-scroll-target="#the-r-rix-package"><span class="header-section-number">1.3</span> The R {rix} package</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/b-rodrigues/quarto_book_nix/edit/main/index.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/b-rodrigues/quarto_book_nix/edit/main/nix_nixpkgs.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">A fully reproducible Quarto book template</h1>
-<p class="subtitle lead">Powered by Github Actions and Nix</p>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Nix</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Bruno Rodrigues </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">October 19, 2023</p>
-    </div>
-  </div>
   
     
   </div>
@@ -204,23 +253,109 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="welcome" class="level1 unnumbered">
-<h1 class="unnumbered">Welcome!</h1>
-<section id="this-book-template-gets-built-on-github-actions-at-each-push" class="level2">
-<h2 class="anchored" data-anchor-id="this-book-template-gets-built-on-github-actions-at-each-push">This book template gets built on Github Actions at each push</h2>
-<p>This Quarto book template gets automatically built on Github Actions each time you push changes. To ensure reproducibility, the Nix package manager gets used to install all the dependencies you need:</p>
-<ul>
-<li>An R version;</li>
-<li>A library of R packages;</li>
-<li>Quarto;</li>
-<li>TeXLive packages;</li>
-<li>any other system-level dependency that is required.</li>
-</ul>
-<p>Because a specific <code>nixpkgs</code> revision gets used, <em>exactly</em> the same pieces of software get <em>always</em> installed. So you don’t need to pin a specific version of R, nor use <code>{renv}</code>, nor make sure to use a fixed version of a runner (typically ubuntu-22.04) to ensure reproducibility of your book. The next chapter explain how Nix works in more detail and why it’s enough to use it to ensure reproducibility.</p>
-<p>Each time a commit gets pushed, a website gets built, an Epub for E-ink readers (such as the Kindle or the Kobo) and a PDF get built. The PDF is also in the right format and ready for self-publishing on Amazon Kindle Direct Publishing.</p>
-
-
+<p>This book template uses the Nix packager manager to handle the book’s dependencies. This chapter introduces the Nix packager manager and <code>nixpkgs</code> quickly.</p>
+<section id="the-nix-package-manager" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="the-nix-package-manager"><span class="header-section-number">1.1</span> The Nix package manager</h2>
+<p>Nix is a package manager available for Linux, Windows (on WSL2) and macOS. Its mono-repository, <code>nixpkgs</code>, contains more than 80’000 packages, among them the entirety of the R packages released on CRAN and Bioconductor, as well as R itself (and RStudio, but only for Linux and Windows, as of writing). This means that it is possible to use the Nix package manager to install R, the R packages you require for your day-to-day work, and any other packages that you might need (for example, if you need Python and Python packages, you can install these as well).</p>
+<p>The question that remains unanswered though, is why use the Nix package manager to install all this software instead of using the usual ways of first installing R, and then using <code>install.packages()</code> to install any required packages?</p>
+<p>There are at least three reasons. The first is that it is possible to define so-called <code>default.nix</code> files that define an environment. This environment will contain all the packages that you require, and will not interfere with any other packages installed on your system. This essentially means that you can have project-specific <code>default.nix</code> files, each specifying the requirements for specific projects. The second reason is that when installing a package that requires system-level dependencies, {rJava} for example, all the lower-level dependencies get automatically installed. Forget about reading error messages of <code>install.packages()</code> to find which system development library you need to install first. The third reason, is that you can pin a specific revision of <code>nixpkgs</code> to ensure reproducibility.</p>
 </section>
+<section id="ensuring-reproducibility-with-nix" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="ensuring-reproducibility-with-nix"><span class="header-section-number">1.2</span> Ensuring reproducibility with Nix</h2>
+<p>The <code>nixpkgs</code> mono-repository is “just” a Github repsitory which you can find here: <a href="https://github.com/NixOS/nixpkgs">https://github.com/NixOS/nixpkgs</a>. This repository contains Nix expressions to build and install more than 80’000 packages and you can search for installable Nix packages <a href="https://search.nixos.org/packages">here</a>.</p>
+<p>Because <code>nixpkgs</code> is a Github repository, it is possible to use a specific commit hash to install the packages as they were at a specific point in time. For example, if you use this commit, 7c9cc5a6e, you’ll get the very latest packages as of the 19th of October 2023, but if you used this one instead: 976fa3369, you’ll get packages from the 19th of August 2023.</p>
+<p>You can declare which revision of <code>nixpkgs</code> to use at the top of a <code>default.nix</code> file. Here is what such a file looks like:</p>
+<pre><code>let
+ pkgs = import (fetchTarball "https://github.com/NixOS/nixpkgs/archive/976fa3369d722e76f37c77493d99829540d43845.tar.gz") {};
+ rpkgs = builtins.attrValues {
+  inherit (pkgs.rPackages) tidymodels vetiver targets xgboost;
+};
+ system_packages = builtins.attrValues {
+  inherit (pkgs) R;
+};
+in
+ pkgs.mkShell {
+  buildInputs = [  rpkgs system_packages  ];
+ }</code></pre>
+<p>As you can see, we import a specific revision of the <code>nixpkgs</code> Github repository to ensure that we always get the same packages in our environment.</p>
+<p>If you’re unfamiliar with Nix, this file can be quite scary. But don’t worry, with my co-author <a href="https://github.com/philipp-baumann">Philipp Baumann</a> we developed an R package called <code>{rix}</code> which generate this <code>default.nix</code> files for you.</p>
+</section>
+<section id="the-r-rix-package" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="the-r-rix-package"><span class="header-section-number">1.3</span> The R {rix} package</h2>
+<p><code>{rix}</code> is an R package that makes it very easy to generate very complex <code>default.nix</code> files. These files can in turn be used by the Nix package manager to build project-specific environments. The book’s Github repository contains a file called <code>define_env.R</code> with the following content:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rix)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rix</span>(<span class="at">r_ver =</span> <span class="st">"4.3.1"</span>,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">r_pkgs =</span> <span class="fu">c</span>(<span class="st">"quarto"</span>),</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">system_pkgs =</span> <span class="st">"quarto"</span>,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">tex_pkgs =</span> <span class="fu">c</span>(</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>      <span class="st">"amsmath"</span>,</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>      <span class="st">"framed"</span>,</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>      <span class="st">"fvextra"</span>,</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>      <span class="st">"environ"</span>,</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>      <span class="st">"fontawesome5"</span>,</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>      <span class="st">"orcidlink"</span>,</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>      <span class="st">"pdfcol"</span>,</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>      <span class="st">"tcolorbox"</span>,</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>      <span class="st">"tikzfill"</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">ide =</span> <span class="st">"other"</span>,</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">shell_hook =</span> <span class="st">""</span>,</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">project_path =</span> <span class="st">"."</span>,</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">overwrite =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">print =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>{rix}</code> ships the <code>rix()</code> function which takes several arguments. These arguments allow you to specify an R version, a list of R packages, a list of system packages, TeXLive packages and other options that allow you to specify your requirements. Running this code generates this <code>default.nix</code> file:</p>
+<pre><code># This file was generated by the {rix} R package v0.4.1 on 2023-10-19
+# with following call:
+# &gt;rix(r_ver = "976fa3369d722e76f37c77493d99829540d43845",
+#  &gt; r_pkgs = c("quarto"),
+#  &gt; system_pkgs = "quarto",
+#  &gt; tex_pkgs = c("amsmath",
+#  &gt; "framed",
+#  &gt; "fvextra",
+#  &gt; "environ",
+#  &gt; "fontawesome5",
+#  &gt; "orcidlink",
+#  &gt; "pdfcol",
+#  &gt; "tcolorbox",
+#  &gt; "tikzfill"),
+#  &gt; ide = "other",
+#  &gt; project_path = ".",
+#  &gt; overwrite = TRUE,
+#  &gt; print = TRUE,
+#  &gt; shell_hook = "")
+# It uses nixpkgs' revision 976fa3369d722e76f37c77493d99829540d43845 for reproducibility purposes
+# which will install R version 4.3.1
+# Report any issues to https://github.com/b-rodrigues/rix
+let
+ pkgs = import (fetchTarball "https://github.com/NixOS/nixpkgs/archive/976fa3369d722e76f37c77493d99829540d43845.tar.gz") {};
+ rpkgs = builtins.attrValues {
+  inherit (pkgs.rPackages) quarto;
+};
+  tex = (pkgs.texlive.combine {
+  inherit (pkgs.texlive) scheme-small amsmath framed fvextra environ fontawesome5 orcidlink pdfcol tcolorbox tikzfill;
+});
+ system_packages = builtins.attrValues {
+  inherit (pkgs) R glibcLocalesUtf8 quarto;
+};
+  in
+  pkgs.mkShell {
+    LOCALE_ARCHIVE = if pkgs.system == "x86_64-linux" then  "${pkgs.glibcLocalesUtf8}/lib/locale/locale-archive" else "";
+    LANG = "en_US.UTF-8";
+    LC_ALL = "en_US.UTF-8";
+    LC_TIME = "en_US.UTF-8";
+    LC_MONETARY = "en_US.UTF-8";
+    LC_PAPER = "en_US.UTF-8";
+    LC_MEASUREMENT = "en_US.UTF-8";
+
+    buildInputs = [  rpkgs tex system_packages  ];
+  }</code></pre>
+<p>You can now use this file to work on your book locally by first building the environment and then use it. To know more about using <code>default.nix</code> files on a day-to-day basis, read <a href="https://b-rodrigues.github.io/rix/articles/building-reproducible-development-environments-with-rix.html">this vignette</a>.</p>
+<p>In the next chapter, I’m going to explain how this book gets built on Github Actions.</p>
+
+
 </section>
 
 </main> <!-- /main -->
@@ -474,10 +609,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./index.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Welcome!</span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./nix_nixpkgs.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Nix</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./nix_actions.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Building on Github Actions with Nix</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
