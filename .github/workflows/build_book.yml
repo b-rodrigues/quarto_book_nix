@@ -3,6 +3,7 @@ name: Build book using Nix
 on:
   push:
     branches:
+      - main
       - master
 
 jobs:
