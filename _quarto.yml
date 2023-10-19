@@ -13,7 +13,7 @@ book:
   downloads: [pdf, epub]
   chapters:
     - index.qmd
-    - nix_nixpgs.qmd
+    - nix_nixpkgs.qmd
     - nix_actions.qmd
     - conclusion.qmd
   page-navigation: true
