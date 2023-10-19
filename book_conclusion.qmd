@@ -1,3 +1,0 @@
-# The end
-
-In conclusion, Nix rocks.
