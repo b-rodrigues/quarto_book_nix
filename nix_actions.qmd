@@ -57,11 +57,11 @@ jobs:
 
 ```
 
-The first step *Checkout code* makes the code availalbe to the rest of the
+The first step *Checkout code* makes the code available to the rest of the
 steps. I then install Nix on this runner using the Determinate Systems
-`nix-installer-action` then I use another action from Determinate Systems, the
+`nix-installer-action` and then I use another action from Determinate Systems, the
 `magic-nix-cache-action`. This action caches all the packages so that they don't
-need to get re-downloaded each time a change gets pushed, speeding up the
+need to get re-built each time a change gets pushed, speeding up the
 process by a lot. The development environment gets then built using `nix-build`.
 
 Finally, an action I defined runs, `quarto-nix-actions/publish`. This is a fork
